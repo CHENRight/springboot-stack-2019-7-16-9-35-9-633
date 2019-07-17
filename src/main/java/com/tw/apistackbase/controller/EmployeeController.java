@@ -29,8 +29,8 @@ public class EmployeeController {
         return employeeService.pageEmployees(page,pageSize);
     }
 
-    @GetMapping(value = "/{targetGender}")
-    public List<Employee> findEmployeeByGender(@PathVariable("targetGender") String targetGender){
+    @GetMapping(params = "gender")
+    public List<Employee> findEmployeeByGender(@RequestParam(name = "gender") String targetGender){
         return employeeService.findEmployeeByGender(targetGender);
     }
 
