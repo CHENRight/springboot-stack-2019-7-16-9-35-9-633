@@ -3,6 +3,8 @@ package com.tw.apistackbase.dao;
 import com.tw.apistackbase.model.Company;
 import com.tw.apistackbase.model.Employee;
 
+
+
 import java.util.List;
 
 public interface CompanyDao {
@@ -13,11 +15,11 @@ public interface CompanyDao {
 
     Company obtainCompanyByName(String companyName);
 
-    boolean addCompanies(Company company);
+    List<Company> addCompanies(Company company);
 
-    boolean updateCompany(Company company);
+    Company updateCompany(Company company);
 
-    boolean delete(String companyName);
+    List<Company> delete(String companyName);
 
     List<Company> pageCompanies(int page,int pageSize);
 }

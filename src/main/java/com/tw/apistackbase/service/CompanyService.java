@@ -29,18 +29,18 @@ public class CompanyService {
     }
 
 
-    public boolean addCompanies(Company company) {
+    public List<Company> addCompanies(Company company) {
        return companyDao.addCompanies(company);
     }
 
 
-    public boolean updateCompany(Company company) {
+    public Company updateCompany(Company company) {
         return companyDao.updateCompany(company);
     }
 
 
 
-    public boolean delete(String companyName) {
+    public List<Company> delete(String companyName) {
         return companyDao.delete(companyName);
     }
 

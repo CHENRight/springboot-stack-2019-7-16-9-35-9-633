@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SimpleTimeZone;
 import java.util.stream.Collectors;
 
 @Repository
@@ -50,7 +49,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
     @Override
     public boolean update(Employee employee) {
-        List<Employee> employees =  this.employees.stream().filter(employee1 -> employee.equals(employee1)).collect(Collectors.toList());
+        List<Employee> employees =  this.employees.stream().filter(employee::equals).collect(Collectors.toList());
         if(employees.size() > 0){
             employees.get(0).update(employee);
             return true;

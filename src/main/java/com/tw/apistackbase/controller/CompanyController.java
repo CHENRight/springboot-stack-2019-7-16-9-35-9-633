@@ -37,19 +37,16 @@ public class CompanyController {
 
     @PostMapping
     public List<Company> addCompany(@RequestBody Company company) {
-        if(companyService.addCompanies(company)){
-            return companyService.findAll();
-        }
-        return null;
+        return companyService.addCompanies(company);
     }
 
     @PutMapping
     public Company update(@RequestBody Company company) {
-        return companyService.updateCompany(company) ? company : null;
+        return companyService.updateCompany(company);
     }
 
     @DeleteMapping("/{companyName}")
     public List<Company> delete(@PathVariable String companyName) {
-        return companyService.delete(companyName) ? companyService.findAll() : null;
+        return companyService.delete(companyName);
     }
 }

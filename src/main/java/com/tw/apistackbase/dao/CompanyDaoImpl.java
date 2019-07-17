@@ -3,7 +3,6 @@ package com.tw.apistackbase.dao;
 import com.tw.apistackbase.model.Company;
 import com.tw.apistackbase.model.Employee;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,8 +10,7 @@ import java.util.stream.Collectors;
 @Repository
 public class CompanyDaoImpl implements CompanyDao{
     public List<Company> companies = new ArrayList<>();
-
-    Employee employee1 = new Employee(1,"LiMing",22,"male",6000);
+    Employee employee1 = new Employee(1, "LiMing", 22, "male", 6000);
     Employee employee2 = new Employee(2,"XiaoHong",11,"female",10000);
     Employee employee3 = new Employee(3,"HanMeimei",19,"male",9000);
     Employee employee4 = new Employee(4,"LiLei",15,"female",2000);
@@ -48,32 +46,32 @@ public class CompanyDaoImpl implements CompanyDao{
     }
 
     @Override
-    public boolean addCompanies(Company company) {
+    public List<Company> addCompanies(Company company) {
         if(companies.contains(company)){
-            return false;
+            return null;
         }
         companies.add(company);
-        return true;
+        return companies;
     }
 
     @Override
-    public boolean updateCompany(Company company) {
+    public Company updateCompany(Company company) {
         List<Company> companies1 =  this.companies.stream().filter(company1 -> company.getCompanyName().equals(company1.getCompanyName())).collect(Collectors.toList());
         if(companies1.size() > 0){
             companies1.get(0).update(company);
-            return true;
+            return companies1.get(0);
         }
-        return false;
+        return null;
     }
 
     @Override
-    public boolean delete(String companyName) {
+    public List<Company> delete(String companyName) {
         List<Company> companies1 =  this.companies.stream().filter(company -> companyName.equals(company.getCompanyName())).collect(Collectors.toList());
         if(companies1.size() > 0){
             this.companies.remove(companies1.get(0));
-            return true;
+            return companies;
         }
-        return false;
+        return null;
     }
 
     @Override
